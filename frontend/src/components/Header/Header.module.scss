@@ -1,0 +1,48 @@
+@use '../../assets/styles/variables.scss' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid $border;
+
+  .textContainer {
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: $text-muted;
+    }
+  }
+
+  .burger {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+
+  .avatar {
+    width: 2rem;
+    height: 2rem;
+    background-color: #d8b4fe;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    .burger {
+      display: none;
+    }
+  }
+}

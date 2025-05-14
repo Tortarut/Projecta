@@ -1,0 +1,44 @@
+.card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 260px;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+}
+
+.deadline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #555;
+}
+
+.done {
+  color: white;
+  background: #2ab573;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.pending {
+  color: white;
+  background: #f0a000;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}

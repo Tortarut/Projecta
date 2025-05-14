@@ -1,0 +1,609 @@
+[
+    {
+      "model": "api.team",
+      "pk": 1,
+      "fields": {
+        "name": "Alpha Team"
+      }
+    },
+    {
+      "model": "api.user",
+      "pk": 1,
+      "fields": {
+        "email": "aleks.lead@example.com",
+        "password": "12345678",
+        "name": "Aleksandr",
+        "position": "Team Lead",
+        "team": 1,
+        "is_staff": true
+      }
+    },
+    {
+      "model": "api.user",
+      "pk": 2,
+      "fields": {
+        "email": "bob.dev@example.com",
+        "password": "pbkdf2_sha256$260000$example$hashedpassword",
+        "name": "Bob Ivanov",
+        "position": "Backend Developer",
+        "team": 1,
+        "is_active": true,
+        "is_staff": false
+      }
+    },
+    {
+      "model": "api.user",
+      "pk": 3,
+      "fields": {
+        "email": "carol.dev@example.com",
+        "password": "pbkdf2_sha256$260000$example$hashedpassword",
+        "name": "Carol Sidorova",
+        "position": "Frontend Developer",
+        "team": 1,
+        "is_active": true,
+        "is_staff": false
+      }
+    },
+    {
+      "model": "api.user",
+      "pk": 4,
+      "fields": {
+        "email": "dave.qa@example.com",
+        "password": "pbkdf2_sha256$260000$example$hashedpassword",
+        "name": "Dave Pavlov",
+        "position": "QA Engineer",
+        "team": 1,
+        "is_active": true,
+        "is_staff": false
+      }
+    },
+    {
+      "model": "api.user",
+      "pk": 5,
+      "fields": {
+        "email": "eva.qa@example.com",
+        "password": "pbkdf2_sha256$260000$example$hashedpassword",
+        "name": "Eva Smirnova",
+        "position": "QA Engineer",
+        "team": 1,
+        "is_active": true,
+        "is_staff": false
+      }
+    },
+    {
+      "model": "api.user",
+      "pk": 6,
+      "fields": {
+        "email": "frank.pm@example.com",
+        "password": "pbkdf2_sha256$260000$example$hashedpassword",
+        "name": "Frank Orlov",
+        "position": "Project Manager",
+        "team": 1,
+        "is_active": true,
+        "is_staff": false
+      }
+    },
+    {
+      "model": "api.project",
+      "pk": 1,
+      "fields": {
+        "name": "Internal CRM System",
+        "description": "Разработка внутренней CRM-системы для управления клиентами",
+        "deadline": "2025-06-20",
+        "team": 1
+      }
+    },
+    {
+      "model": "api.project",
+      "pk": 2,
+      "fields": {
+        "name": "Company Website Redesign",
+        "description": "Обновление корпоративного сайта с учетом UX/UI",
+        "deadline": "2025-07-10",
+        "team": 1
+      }
+    },
+    {
+      "model": "api.project",
+      "pk": 3,
+      "fields": {
+        "name": "Mobile App MVP",
+        "description": "Создание MVP мобильного приложения для Android и iOS",
+        "deadline": "2025-06-15",
+        "team": 1
+      }
+    },
+    {
+      "model": "api.project",
+      "pk": 4,
+      "fields": {
+        "name": "One-Day Hackathon Project",
+        "description": "Проект для однодневного хакатона",
+        "deadline": "2025-05-07",
+        "team": 1
+      }
+    },
+    {
+      "model": "api.project",
+      "pk": 5,
+      "fields": {
+        "name": "Performance Optimization",
+        "description": "Оптимизация производительности существующей платформы",
+        "deadline": "2025-05-07",
+        "team": 1
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 1,
+      "fields": {
+        "name": "Сверстать дашборд",
+        "project": 1,
+        "user": 1,
+        "deadline": "2025-06-20",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 2,
+      "fields": {
+        "name": "Оптимизировать SQL-запросы",
+        "project": 1,
+        "user": 1,
+        "deadline": "2025-06-20",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 3,
+      "fields": {
+        "name": "Создать API для клиентов",
+        "project": 1,
+        "user": 1,
+        "deadline": "2025-06-20",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 4,
+      "fields": {
+        "name": "Реализовать push-уведомления",
+        "project": 1,
+        "user": 1,
+        "deadline": "2025-06-20",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 5,
+      "fields": {
+        "name": "Создать тестовое покрытие",
+        "project": 1,
+        "user": 2,
+        "deadline": "2025-06-20",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 6,
+      "fields": {
+        "name": "Написать юнит-тесты",
+        "project": 1,
+        "user": 3,
+        "deadline": "2025-06-20",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 7,
+      "fields": {
+        "name": "Настроить логирование",
+        "project": 1,
+        "user": 4,
+        "deadline": "2025-06-20",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 8,
+      "fields": {
+        "name": "Обновить библиотеку компонентов",
+        "project": 1,
+        "user": 5,
+        "deadline": "2025-06-20",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 9,
+      "fields": {
+        "name": "Настроить CI/CD",
+        "project": 1,
+        "user": 6,
+        "deadline": "2025-06-20",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 10,
+      "fields": {
+        "name": "Провести нагрузочное тестирование",
+        "project": 2,
+        "user": 1,
+        "deadline": "2025-07-10",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 11,
+      "fields": {
+        "name": "Настроить метрики",
+        "project": 2,
+        "user": 1,
+        "deadline": "2025-07-10",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 12,
+      "fields": {
+        "name": "Написать юнит-тесты",
+        "project": 2,
+        "user": 1,
+        "deadline": "2025-07-10",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 13,
+      "fields": {
+        "name": "Реализовать push-уведомления",
+        "project": 2,
+        "user": 2,
+        "deadline": "2025-07-10",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 14,
+      "fields": {
+        "name": "Оптимизировать SQL-запросы",
+        "project": 2,
+        "user": 3,
+        "deadline": "2025-07-10",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 15,
+      "fields": {
+        "name": "Написать юнит-тесты",
+        "project": 2,
+        "user": 4,
+        "deadline": "2025-07-10",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 16,
+      "fields": {
+        "name": "Протестировать формы",
+        "project": 2,
+        "user": 5,
+        "deadline": "2025-07-10",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 17,
+      "fields": {
+        "name": "Собрать аналитику пользователей",
+        "project": 2,
+        "user": 6,
+        "deadline": "2025-07-10",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 18,
+      "fields": {
+        "name": "Создать тестовое покрытие",
+        "project": 3,
+        "user": 1,
+        "deadline": "2025-06-15",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 19,
+      "fields": {
+        "name": "Реализовать push-уведомления",
+        "project": 3,
+        "user": 1,
+        "deadline": "2025-06-15",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 20,
+      "fields": {
+        "name": "Оптимизировать SQL-запросы",
+        "project": 3,
+        "user": 1,
+        "deadline": "2025-06-15",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 21,
+      "fields": {
+        "name": "Настроить CI/CD",
+        "project": 3,
+        "user": 1,
+        "deadline": "2025-06-15",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 22,
+      "fields": {
+        "name": "Настроить CI/CD",
+        "project": 3,
+        "user": 2,
+        "deadline": "2025-06-15",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 23,
+      "fields": {
+        "name": "Создать API для клиентов",
+        "project": 3,
+        "user": 3,
+        "deadline": "2025-06-15",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 24,
+      "fields": {
+        "name": "Обновить документацию",
+        "project": 3,
+        "user": 4,
+        "deadline": "2025-06-15",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 25,
+      "fields": {
+        "name": "Разработать страницу входа",
+        "project": 3,
+        "user": 5,
+        "deadline": "2025-06-15",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 26,
+      "fields": {
+        "name": "Сверстать дашборд",
+        "project": 3,
+        "user": 6,
+        "deadline": "2025-06-15",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 27,
+      "fields": {
+        "name": "Обновить библиотеку компонентов",
+        "project": 4,
+        "user": 1,
+        "deadline": "2025-05-07",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 28,
+      "fields": {
+        "name": "Оптимизировать SQL-запросы",
+        "project": 4,
+        "user": 1,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 29,
+      "fields": {
+        "name": "Написать юнит-тесты",
+        "project": 4,
+        "user": 1,
+        "deadline": "2025-05-07",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 30,
+      "fields": {
+        "name": "Настроить CI/CD",
+        "project": 4,
+        "user": 2,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 31,
+      "fields": {
+        "name": "Обновить библиотеку компонентов",
+        "project": 4,
+        "user": 3,
+        "deadline": "2025-05-07",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 32,
+      "fields": {
+        "name": "Оптимизировать SQL-запросы",
+        "project": 4,
+        "user": 4,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 33,
+      "fields": {
+        "name": "Оптимизировать SQL-запросы",
+        "project": 4,
+        "user": 5,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 34,
+      "fields": {
+        "name": "Протестировать формы",
+        "project": 4,
+        "user": 6,
+        "deadline": "2025-05-07",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 35,
+      "fields": {
+        "name": "Разработать модуль авторизации",
+        "project": 5,
+        "user": 1,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 36,
+      "fields": {
+        "name": "Настроить CI/CD",
+        "project": 5,
+        "user": 1,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 37,
+      "fields": {
+        "name": "Создать тестовое покрытие",
+        "project": 5,
+        "user": 1,
+        "deadline": "2025-05-07",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 38,
+      "fields": {
+        "name": "Собрать аналитику пользователей",
+        "project": 5,
+        "user": 1,
+        "deadline": "2025-05-07",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 39,
+      "fields": {
+        "name": "Собрать аналитику пользователей",
+        "project": 5,
+        "user": 2,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 40,
+      "fields": {
+        "name": "Протестировать формы",
+        "project": 5,
+        "user": 3,
+        "deadline": "2025-05-07",
+        "status": "Готово"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 41,
+      "fields": {
+        "name": "Создать API для клиентов",
+        "project": 5,
+        "user": 4,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 42,
+      "fields": {
+        "name": "Провести нагрузочное тестирование",
+        "project": 5,
+        "user": 5,
+        "deadline": "2025-05-07",
+        "status": "В процессе"
+      }
+    },
+    {
+      "model": "api.task",
+      "pk": 43,
+      "fields": {
+        "name": "Создать API для клиентов",
+        "project": 5,
+        "user": 6,
+        "deadline": "2025-05-07",
+        "status": "Готово"
+      }
+    }
+  ]

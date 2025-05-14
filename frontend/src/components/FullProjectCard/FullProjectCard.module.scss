@@ -1,0 +1,121 @@
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;
+}
+
+.imageWrapper {
+  position: relative;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+}
+
+.fallbackContent {
+  position: absolute;
+  font-size: 2rem;
+  color: #aaa;
+  display: none;
+}
+
+.fallback .fallbackContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.progressRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.progressText {
+  color: #333;
+}
+
+.percent {
+  color: #333;
+  font-weight: 500;
+}
+
+.progressBar {
+  background: #ccc;
+  height: 8px;
+  border-radius: 4px;
+  position: relative;
+  overflow: visible;
+}
+
+.progressFill {
+  background: #18b673;
+  height: 100%;
+  border-radius: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -60%);
+  width: 14px;
+  height: 14px;
+  background: #18b673;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; /* ключевой момент */
+  font-size: 0.9rem;
+}
+
+.meta {
+  margin: 0;
+  color: #333;
+}
+
+.link {
+  font-weight: 500;
+  color: #296eff;
+  text-decoration: none;
+  line-height: 1; /* чтобы убрать лишние отступы */
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+  }
+}
