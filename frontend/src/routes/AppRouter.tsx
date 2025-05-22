@@ -5,11 +5,18 @@ import Register from '../pages/Register';
 import {Dashboard} from '../pages/Dashboard/Dashboard';
 import {Projects} from '../pages/Projects/Projects';
 import {ProjectPage} from '../pages/ProjectPage/ProjectPage';
+import {Calendar} from '../pages/Calendar/Calendar';
 import { useAuth } from '../hooks/useAuth';
 import {Layout} from '../layout/Layout';
 import { JSX } from 'react';
 import { DashboardProvider } from '../context/DashboardContext';
 import { ProjectsProvider } from '../context/ProjectContext';
+import { TasksPage } from '../pages/TasksPage/TasksPage';
+import { TasksProvider } from '../context/TasksContext';
+import { CalendarProvider } from '../context/CalendarContext';
+import { TeamPage } from '../pages/TeamPage/TeamPage';
+import { TeamProvider } from '../context/TeamContext';
+
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -46,6 +53,28 @@ const AppRouter = () => (
               <ProjectPage />
             </PrivateRoute>
           } />
+          <Route path="/tasks" element={
+            <PrivateRoute>
+              <TasksProvider>
+                <TasksPage />
+              </TasksProvider>
+            </PrivateRoute>
+          } />
+          <Route path="/calendar" element={
+            <PrivateRoute>
+              <CalendarProvider>
+                <Calendar />
+              </CalendarProvider>
+            </PrivateRoute>
+          } />
+          <Route path="/team" element={
+            <PrivateRoute>
+              <TeamProvider>
+                <TeamPage />
+              </TeamProvider>
+            </PrivateRoute>
+          } />
+
       </Routes>
     </Layout>
   </Router>

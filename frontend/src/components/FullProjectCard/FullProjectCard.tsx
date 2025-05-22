@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';  // Добавлен импорт Link
 import styles from './FullProjectCard.module.scss';
 
 interface FullProjectCardProps {
+  id: number;
   name: string;
   deadline: string;
   completion_percent: number;
@@ -9,6 +11,7 @@ interface FullProjectCardProps {
 }
 
 export const FullProjectCard = ({
+  id,  // Добавлен id в параметры
   name,
   deadline,
   completion_percent,
@@ -55,8 +58,10 @@ export const FullProjectCard = ({
 
         <p className={styles.meta}>Задач по проекту: {user_tasks_remaining}</p>
         <div className={styles.footer}>
-        <p className={styles.meta}>Дедлайн: {new Date(deadline).toLocaleDateString('ru-RU')}</p>
-        <a className={styles.link} href="#">Подробнее</a>
+          <p className={styles.meta}>Дедлайн: {new Date(deadline).toLocaleDateString('ru-RU')}</p>
+          <Link className={styles.link} to={`/projects/${id}`}>  {/* Использован Link вместо <a> */}
+            Подробнее
+          </Link>
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
 @use '../../assets/styles/variables.scss' as *;
 
+@use '../../assets/styles/variables.scss' as *;
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -8,14 +10,20 @@
   border-bottom: 1px solid $border;
 
   .textContainer {
+    display: flex;
+    flex-direction: column; // будет переопределено на широких экранах
+    gap: 4px;
+
     h1 {
       font-size: 1.25rem;
       font-weight: 600;
+      margin: 0;
     }
 
     p {
       font-size: 0.875rem;
       color: $text-muted;
+      margin: 0;
     }
   }
 
@@ -43,6 +51,25 @@
   .header {
     .burger {
       display: none;
+    }
+
+    .textContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+
+      h1 {
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+        margin-left: 8px;
+        position: relative;
+        top: -2px; // поднимаем чуть-чуть
+        font-size: 0.875rem;
+        color: $text-muted;
+      }
     }
   }
 }

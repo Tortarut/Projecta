@@ -2,7 +2,7 @@ FROM node:18
 
 WORKDIR /app
 
-COPY frontend/projecta_frontend/ /app/
+COPY frontend/ /app/
 
 RUN npm install
 

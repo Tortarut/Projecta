@@ -2,7 +2,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (UserViewSet, ProjectViewSet, TaskViewSet,
                     TeamViewSet, CurrentUserView, DashboardView,
-                    TeamProjectsView, ProjectDetailView, MyTasksView)
+                    TeamProjectsView, ProjectDetailView, UserTasksView,
+                    CalendarView, TeamMembersView)
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -15,6 +16,8 @@ urlpatterns = [
     path("dashboard/", DashboardView.as_view(), name="dashboard"),
     path("team-projects/", TeamProjectsView.as_view(), name="team-projects"),
     path("projects/<int:pk>/", ProjectDetailView.as_view(), name="project-detail"),
-    path('my-tasks/', MyTasksView.as_view(), name='my-tasks'),
+    path("user-tasks/", UserTasksView.as_view(), name="user-tasks"),
+    path("all-tasks-projects/", CalendarView.as_view(), name="calendar"),
+    path("team-members/", TeamMembersView.as_view(), name="team-members"),
     path('', include(router.urls)),
 ]

@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Folder, ListTodo, CalendarDays, Users } from 'lucide-react';
 import styles from './Sidebar.module.scss';
+import logo from '../../images/projecta_logo.png'
 
 interface Props {
   isOpen: boolean;

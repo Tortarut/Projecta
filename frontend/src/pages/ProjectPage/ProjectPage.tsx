@@ -3,8 +3,17 @@ import { ProjectDetailsProvider } from '../../context/ProjectDetailsContext';
 import { useProject } from '../../hooks/useProject';
 import { TaskCardAlt } from '../../components/TaskCardAlt/TaskCardAlt';
 import styles from './ProjectPage.module.scss';
+import { usePageTitle } from '../../context/PageTitleContext';
+import { useEffect } from 'react';
 
 const ProjectContent = () => {
+  const { setTitle, setSubtitle } = usePageTitle();
+  
+  useEffect(() => {
+        setTitle(`Проект`);
+        setSubtitle(``);
+    }, [setTitle, setSubtitle]);
+
   const { project, loading, error } = useProject();
 
   if (loading) return <p>Загрузка...</p>;

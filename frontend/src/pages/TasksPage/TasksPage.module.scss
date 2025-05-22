@@ -1,14 +1,15 @@
 .wrapper {
-  padding: 1.5rem;
+  padding: 32px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
-
 
 .sortBlock {
   display: flex;
@@ -42,18 +43,26 @@
 }
 
 .addButton {
-  background: #18b673;
-  color: white;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  background-color: #3DB46D;
   border: none;
+  color: white;
+  font-size: 28px;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: #36a25f;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Было 250px */
+  gap: 24px; /* Было 16px */
 }

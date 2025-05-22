@@ -1,0 +1,102 @@
+.calendarPage {
+  display: flex;
+  font-family: 'Inter', sans-serif;
+}
+
+.calendarContent {
+  flex-grow: 1;
+  padding: 24px;
+}
+
+.calendarLayout {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex-wrap: nowrap;
+  height: calc(100vh - 96px); // Добавляем высоту для всего layout
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+.leftColumn {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow-y: auto; // Добавляем скролл
+  max-height: 100%; // Ограничиваем высоту
+
+  @media (max-width: 768px) {
+    order: 2;
+    overflow-y: visible;
+  }
+}
+
+.rightColumn {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  position: sticky; // Делаем календарь sticky
+  top: 24px; // Отступ сверху
+  align-self: flex-start; // Выравниваем по верху
+  height: fit-content; // Высота по содержимому
+
+  @media (min-width: 769px) {
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 768px) {
+    order: 1;
+    position: static;
+    margin-bottom: 16px;
+  }
+}
+
+.calendarSection {
+  h2 {
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+
+  .cardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+}
+
+.datepickerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
+    align-items: stretch;
+  }
+}
+
+.dateButton {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.customDatepicker {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.customPopper {
+  z-index: 1000;
+}
+
+.loading {
+  font-size: 18px;
+}

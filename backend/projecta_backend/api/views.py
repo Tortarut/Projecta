@@ -156,11 +156,115 @@ class ProjectDetailView(APIView):
 
         return Response(project_data)
 
-class MyTasksView(APIView):
+class UserTasksView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
         user = request.user
-        tasks = Task.objects.filter(user=user).select_related('project').order_by('deadline')
-        serializer = TaskSerializer(tasks, many=True)
-        return Response(serializer.data)
+        tasks = Task.objects.filter(user=user).select_related('project')
+
+        tasks_data = [
+            {
+                "id": task.id,
+                "name": task.name,
+                "deadline": task.deadline,
+                "status": task.status,
+                "project": {
+                    "id": task.project.id,
+                    "name": task.project.name
+                }
+            }
+            for task in tasks
+        ]
+
+        return Response(tasks_data)
+
+class CalendarView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        team = user.team
+
+        team_data = {"name": team.name} if team else None
+
+        upcoming_tasks = (
+            Task.objects
+            .filter(user=user)
+            .select_related("project")
+            .order_by("deadline")
+        )
+
+        tasks_data = [
+            {
+                "id": task.id,
+                "name": task.name,
+                "deadline": task.deadline,
+                "status": task.status,
+                "project": {
+                    "id": task.project.id,
+                    "name": task.project.name
+                }
+            }
+            for task in upcoming_tasks
+        ]
+
+        # 3 ближайших проекта команды
+        team_projects = (
+            Project.objects
+            .filter(team=team)
+            .order_by("deadline")
+        )
+
+        projects_data = []
+        for project in team_projects:
+            total_tasks = Task.objects.filter(project=project).count()
+            done_tasks = Task.objects.filter(project=project, status="Готово").count()
+            user_tasks_remaining = Task.objects.filter(project=project, user=user).exclude(status="Готово").count()
+
+            completion_percent = round((done_tasks / total_tasks * 100), 1) if total_tasks else 0.0
+
+            projects_data.append({
+                "id": project.id,
+                "name": project.name,
+                "deadline": project.deadline,
+                "completion_percent": completion_percent,
+                "user_tasks_remaining": user_tasks_remaining
+            })
+        return Response({
+            "team": team_data,
+            "upcoming_tasks": tasks_data,
+            "upcoming_projects": projects_data
+        })
+    
+class TeamMembersView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        team = user.team
+
+        if not team:
+            return Response({"detail": "Вы не состоите в команде."}, status=400)
+
+        members = User.objects.filter(team=team)
+
+        members_data = []
+        for member in members:
+            task_count = Task.objects.filter(user=member).count()
+            members_data.append({
+                "id": member.id,
+                "name": member.name,
+                "email": member.email,
+                "position": member.position,
+                "task_count": task_count,
+                "is_current_user": member.id == user.id,
+                "image": request.build_absolute_uri(member.avatar.url) if member.avatar else None
+            })
+        print(team.name)
+        data = {
+            'team_name': team.name,
+            'members': members_data
+        }
+
+        return Response(data)

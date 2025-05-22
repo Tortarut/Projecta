@@ -25,7 +25,6 @@ export const DashboardProvider = ({ children }: { children: ReactNode }) => {
     try {
       setLoading(true);
       setError(null);
-      console.log("wasd")
       const res = await api.get('/dashboard');
       setData(res.data);
     } catch (err) {
