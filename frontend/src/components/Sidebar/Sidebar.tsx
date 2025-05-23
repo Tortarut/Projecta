@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Folder, ListTodo, CalendarDays, Users } from 'lucide-react';
 import styles from './Sidebar.module.scss';
-import logo from '../../images/projecta_logo.png'
+import logo from '../../images/logo_small.png'
 
 interface Props {
   isOpen: boolean;
@@ -21,7 +21,10 @@ export const Sidebar = ({ isOpen }: Props) => {
         to="/dashboard" 
         className={styles.logoLink}
       >
-        <div className={styles.logo}>Projecta</div>
+        <div className={styles.logo}>
+          <img src={logo} alt="P" className={styles.logoImg} />
+          <span className={styles.logoText}>rojecta</span>
+        </div>
       </NavLink>
       <nav>
         {navItems.map(({ label, path, icon }) => (

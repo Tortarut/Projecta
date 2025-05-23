@@ -29,11 +29,27 @@
     }
   }
 
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
+.logo {
+  display: flex;
+  align-items: flex-end; // выравнивание по нижней линии
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: $text-main;
+
+  .logoImg {
+    height: 50px;     // размер картинки
+    width: auto;
+    margin-right: 0;  // убираем отступ
+    display: inline-block;
   }
+
+  .logoText {
+    display: inline-block;
+    font-size: 2.2rem;
+    line-height: 1;    // выравнивание по нижнему краю
+  }
+}
 
   .navItem {
     display: flex;
