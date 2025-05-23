@@ -381,3 +381,19 @@ $decor-opacity: 0.05;
     text-decoration: underline;
   }
 }
+
+.successMessage {
+  color: #28a745;
+  background-color: #e6f4ea;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.errorMessage {
+  color: #dc3545;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
