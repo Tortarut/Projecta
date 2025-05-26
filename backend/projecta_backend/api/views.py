@@ -42,7 +42,7 @@ class DashboardView(APIView):
 
         upcoming_tasks = (
             Task.objects
-            .filter(user=user)
+            .filter(user=user, status="В процессе")
             .select_related("project")
             .order_by("deadline")[:3]
         )
@@ -105,7 +105,7 @@ class TeamProjectsView(APIView):
         for project in projects:
             total_tasks = Task.objects.filter(project=project).count()
             completed_tasks = Task.objects.filter(project=project, status="Готово").count()
-            user_tasks_count = Task.objects.filter(project=project, user=user).count()
+            user_tasks_count = Task.objects.filter(project=project, user=user, status="В процессе").count()
 
             completion_percent = round((completed_tasks / total_tasks * 100), 1) if total_tasks else 0.0
 
@@ -209,7 +209,6 @@ class CalendarView(APIView):
             for task in upcoming_tasks
         ]
 
-        # 3 ближайших проекта команды
         team_projects = (
             Project.objects
             .filter(team=team)

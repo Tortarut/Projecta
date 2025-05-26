@@ -29,27 +29,27 @@
     }
   }
 
-.logo {
-  display: flex;
-  align-items: flex-end; // выравнивание по нижней линии
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  color: $text-main;
+  .logo {
+    display: flex;
+    align-items: flex-end;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: $text-main;
 
-  .logoImg {
-    height: 50px;     // размер картинки
-    width: auto;
-    margin-right: 0;  // убираем отступ
-    display: inline-block;
-  }
+    .logoImg {
+      height: 50px;
+      width: auto;
+      margin-right: 0;
+      display: inline-block;
+    }
 
-  .logoText {
-    display: inline-block;
-    font-size: 2.2rem;
-    line-height: 1;    // выравнивание по нижнему краю
+    .logoText {
+      display: inline-block;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
   }
-}
 
   .navItem {
     display: flex;
@@ -59,6 +59,7 @@
     border-radius: 0.5rem;
     color: $text-main;
     text-decoration: none;
+    overflow: hidden;
 
     &:hover {
       background-color: $gray;
@@ -68,6 +69,27 @@
       background-color: $gray;
       font-weight: 500;
     }
+
+    .iconWrapper,
+    .labelWrapper {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    .iconWrapper.animate {
+      animation: fadeInSlide 0.3s forwards;
+    }
+
+    .labelWrapper.animate {
+      animation: fadeInSlide 0.3s forwards;
+    }
+  }
+}
+
+@keyframes fadeInSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -75,5 +97,14 @@
   .sidebar {
     position: relative;
     transform: translateX(0);
+
+    .navItem {
+      .iconWrapper,
+      .labelWrapper {
+        opacity: 1;
+        transform: translateX(0);
+        animation: none;
+      }
+    }
   }
 }

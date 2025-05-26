@@ -32,7 +32,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "cypress run",
+    "test:e2e:dev": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +57,16 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.87.0"
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@types/cypress": "^0.1.6",
+    "@types/testing-library__jest-dom": "^5.14.9",
+    "babel-jest": "^29.7.0",
+    "cypress": "^14.4.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "sass": "^1.87.0",
+    "ts-jest": "^29.3.4"
   }
 }

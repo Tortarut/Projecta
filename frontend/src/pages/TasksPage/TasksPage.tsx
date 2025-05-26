@@ -1,34 +1,50 @@
 import { useTasks } from '../../hooks/useTasks';
 import { TaskCard } from '../../components/TaskCard/TaskCard';
 import styles from './TasksPage.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { usePageTitle } from '../../context/PageTitleContext';
+import { CreateTaskModal } from '../../components/CreateTaskModal/CreateTaskModal';
 
 type SortOption = 'project' | 'name' | 'urgency';
 
 export const TasksPage = () => {
-    const { setTitle, setSubtitle } = usePageTitle();
-      
-      useEffect(() => {
-            setTitle(`Задачи`);
-            setSubtitle(``);
-        }, [setTitle, setSubtitle]);
-        
-  const { tasks, loading } = useTasks();
-  const [sortBy, setSortBy] = useState<SortOption>('project');
+  const { setTitle, setSubtitle } = usePageTitle();
 
-  const sortedTasks = [...tasks].sort((a, b) => {
-    switch (sortBy) {
-      case 'project':
-        return a.project.name.localeCompare(b.project.name);
-      case 'name':
-        return a.name.localeCompare(b.name);
-      case 'urgency':
-        return new Date(a.deadline).getTime() - new Date(b.deadline).getTime();
-      default:
-        return 0;
-    }
-  });
+  useEffect(() => {
+    setTitle(`Задачи`);
+    setSubtitle(``);
+  }, [setTitle, setSubtitle]);
+
+  const { tasks, loading, refresh } = useTasks();
+  const [sortBy, setSortBy] = useState<SortOption>('project');
+  const [isModalOpen, setModalOpen] = useState(false);
+
+    const normalizedTasks = useMemo(() => {
+    return tasks.map(task => ({
+      ...task,
+      deadline: new Date(task.deadline).getTime(),
+    }));
+  }, [tasks]);
+
+    const sortedTasks = useMemo(() => {
+    return [...tasks].sort((a, b) => {
+      switch (sortBy) {
+        case 'project':
+          return a.project.name.localeCompare(b.project.name);
+        case 'name':
+          return a.name.localeCompare(b.name);
+        case 'urgency': {
+          const dateA = new Date(a.deadline);
+          const dateB = new Date(b.deadline);
+          const timeA = isNaN(dateA.getTime()) ? Infinity : dateA.getTime();
+          const timeB = isNaN(dateB.getTime()) ? Infinity : dateB.getTime();
+          return timeA - timeB;
+        }
+        default:
+          return 0;
+      }
+    });
+  }, [tasks, sortBy]);
 
   return (
     <div className={styles.wrapper}>
@@ -45,7 +61,7 @@ export const TasksPage = () => {
             <option value="urgency">Срочности</option>
           </select>
         </div>
-        <button className={styles.addButton}>+</button>
+        <button className={styles.addButton} onClick={() => setModalOpen(true)}>+</button>
       </div>
 
       <div className={styles.grid}>
@@ -57,6 +73,12 @@ export const TasksPage = () => {
           ))
         )}
       </div>
+
+      <CreateTaskModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        onSuccess={refresh}
+      />
     </div>
   );
 };

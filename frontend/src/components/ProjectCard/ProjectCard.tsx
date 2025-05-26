@@ -19,6 +19,10 @@ export const ProjectCard = ({ project }: Props) => {
         <div
           className={styles.progress}
           style={{ width: `${project.completion_percent}%` }}
+          role="progressbar"
+          aria-valuenow={project.completion_percent}
+          aria-valuemin={0}
+          aria-valuemax={100}
         >
           <span className={styles.thumb} />
         </div>

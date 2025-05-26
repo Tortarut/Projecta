@@ -6,8 +6,8 @@ from .views import (UserViewSet, ProjectViewSet, TaskViewSet,
                     CalendarView, TeamMembersView)
 
 router = DefaultRouter()
-router.register(r'users', UserViewSet)
 router.register(r'projects', ProjectViewSet)
+router.register(r'users', UserViewSet)
 router.register(r'tasks', TaskViewSet)
 router.register(r'teams', TeamViewSet)
 

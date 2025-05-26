@@ -4,14 +4,16 @@ import styles from './Projects.module.scss';
 import { Project } from '../../types';
 import { usePageTitle } from '../../context/PageTitleContext';
 import { useEffect, useState } from 'react';
+import { CreateProjectModal } from '../../components/CreateProjectModal/CreateProjectModal';
 
 type SortOption = 'name' | 'urgency' | 'progress' | 'tasksCount';
 
 export const Projects = () => {
-  const { projects, loading, error } = useProjectsContext();
+  const { projects, loading, error, refresh } = useProjectsContext();
   const { setTitle, setSubtitle } = usePageTitle();
   const [sortBy, setSortBy] = useState<SortOption>('name');
-  
+  const [isModalOpen, setModalOpen] = useState(false);
+
   useEffect(() => {
     setTitle(`Проекты`);
     setSubtitle(``);
@@ -52,13 +54,23 @@ export const Projects = () => {
             <option value="tasksCount">Количеству задач</option>
           </select>
         </div>
-        <button className={styles.addButton}>+</button>
+        <button className={styles.addButton} onClick={() => setModalOpen(true)}>+</button>
       </div>
+
       <div className={styles.grid}>
         {sortedProjects.map((project: Project) => (
           <FullProjectCard key={project.id} {...project} />
         ))}
       </div>
+
+      <CreateProjectModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        onSuccess={async () => {
+          await refresh(); // обновим проекты
+          setModalOpen(false); // закроем модалку
+        }}
+      />
     </div>
   );
 };

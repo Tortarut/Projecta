@@ -17,12 +17,21 @@ export const TeamMemberCard = ({ member }: Props) => {
           <div className={styles.placeholder} />
         )}
       </div>
-      <h3>
-        {member.name}
-        {isCurrent && <span className={styles.you}>&nbsp;(вы)</span>}
-      </h3>
-      <p>{member.position}</p>
-      <p>Текущих задач: {member.task_count}</p>
+      <div className={styles.content}>
+        <h3 className={styles.name}>
+          {member.name}
+          {isCurrent && <span className={styles.you}>&nbsp;(вы)</span>}
+        </h3>
+        <div className={styles.details}>
+          <p className={styles.position}>{member.position}</p>
+          <div className={styles.stats}>
+            <div className={styles.statItem}>
+              <span className={styles.statLabel}>Задач</span>
+              <span className={styles.statValue}>{member.task_count}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

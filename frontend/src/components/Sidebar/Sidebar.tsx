@@ -2,18 +2,29 @@ import { NavLink } from 'react-router-dom';
 import { Folder, ListTodo, CalendarDays, Users } from 'lucide-react';
 import styles from './Sidebar.module.scss';
 import logo from '../../images/logo_small.png'
+import { useEffect, useState } from 'react';
 
 interface Props {
   isOpen: boolean;
 }
 
 export const Sidebar = ({ isOpen }: Props) => {
+  const [shouldAnimate, setShouldAnimate] = useState(false);
   const navItems = [
     { label: 'Проекты', path: '/projects', icon: <Folder size={18} /> },
     { label: 'Задачи', path: '/tasks', icon: <ListTodo size={18} /> },
     { label: 'Календарь', path: '/calendar', icon: <CalendarDays size={18} /> },
     { label: 'Команда', path: '/team', icon: <Users size={18} /> }
   ];
+
+  useEffect(() => {
+    if (isOpen) {
+      setShouldAnimate(true);
+    } else {
+      // Сбрасываем анимацию при закрытии
+      setShouldAnimate(false);
+    }
+  }, [isOpen]);
 
   return (
     <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
@@ -27,7 +38,7 @@ export const Sidebar = ({ isOpen }: Props) => {
         </div>
       </NavLink>
       <nav>
-        {navItems.map(({ label, path, icon }) => (
+        {navItems.map(({ label, path, icon }, index) => (
           <NavLink
             to={path}
             key={path}
@@ -35,8 +46,14 @@ export const Sidebar = ({ isOpen }: Props) => {
               isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
             }
           >
-            {icon}
-            {label}
+            <span className={`${styles.iconWrapper} ${shouldAnimate ? styles.animate : ''}`} 
+                  style={{ animationDelay: `${index * 0.1}s` }}>
+              {icon}
+            </span>
+            <span className={`${styles.labelWrapper} ${shouldAnimate ? styles.animate : ''}`} 
+                  style={{ animationDelay: `${index * 0.1 + 0.15}s` }}>
+              {label}
+            </span>
           </NavLink>
         ))}
       </nav>
