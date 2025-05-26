@@ -14,7 +14,7 @@ export const TeamMemberCard = ({ member }: Props) => {
         {member.image ? (
           <img src={member.image} alt={member.name} />
         ) : (
-          <div className={styles.placeholder} />
+          <div className={styles.placeholder}>👤</div>
         )}
       </div>
       <div className={styles.content}>

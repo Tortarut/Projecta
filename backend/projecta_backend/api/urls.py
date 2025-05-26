@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import (UserViewSet, ProjectViewSet, TaskViewSet,
                     TeamViewSet, CurrentUserView, DashboardView,
                     TeamProjectsView, ProjectDetailView, UserTasksView,
-                    CalendarView, TeamMembersView)
+                    CalendarView, TeamMembersView, ResetTasksStatusView)
 
 router = DefaultRouter()
 router.register(r'projects', ProjectViewSet)
@@ -19,5 +19,6 @@ urlpatterns = [
     path("user-tasks/", UserTasksView.as_view(), name="user-tasks"),
     path("all-tasks-projects/", CalendarView.as_view(), name="calendar"),
     path("team-members/", TeamMembersView.as_view(), name="team-members"),
+    path("reset-tasks-status/", ResetTasksStatusView.as_view(), name="reset-tasks-status"),
     path('', include(router.urls)),
 ]

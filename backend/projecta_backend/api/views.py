@@ -250,7 +250,7 @@ class TeamMembersView(APIView):
 
         members_data = []
         for member in members:
-            task_count = Task.objects.filter(user=member).count()
+            task_count = Task.objects.filter(user=member, status="В процессе").count()
             members_data.append({
                 "id": member.id,
                 "name": member.name,
@@ -267,3 +267,14 @@ class TeamMembersView(APIView):
         }
 
         return Response(data)
+
+class ResetTasksStatusView(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self, request):
+        updated = Task.objects.filter(status="Готово").update(status="В процессе")
+        return Response({
+            "updated_tasks": updated,
+            "message": f"Обновлено {updated} задач(и) со статусом 'Готово' на 'В процессе'."
+        })
